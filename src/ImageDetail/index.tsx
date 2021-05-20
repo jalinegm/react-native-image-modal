@@ -35,7 +35,7 @@ const Styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderWidth:5,
-    borderColor: "red",
+    borderColor: "#107abc",
     borderRadius:10,
   },
   header: {
@@ -54,17 +54,19 @@ const Styles = StyleSheet.create({
   },
   closeButton: {
     fontSize: 35,
+    backgroundColor:'red',
     color: 'white',
     lineHeight: 40,
     width: 40,
     textAlign: 'center',
     shadowOffset: {
-      width: 0,
-      height: 0,
+    	width: 0,
+        height: 0,
     },
     shadowRadius: 1.5,
     shadowColor: 'black',
     shadowOpacity: 0.8,
+    borderRadius:20,
   },
 });
 
@@ -86,7 +88,7 @@ interface Props {
   imageStyle?: ImageStyle;
   renderHeader?: (close: () => void) => JSX.Element | Array<JSX.Element>;
   renderFooter?: (close: () => void) => JSX.Element | Array<JSX.Element>;
-  onTap?: (eventParams: OnTap) => void;
+  onTap?: ()=>void; //(eventParams: OnTap) => void;
   onDoubleTap?: () => void;
   onLongPress?: () => void;
   didOpen?: () => void;
@@ -389,7 +391,8 @@ export default class ImageDetail extends React.Component<Props> {
         if (evt.nativeEvent.changedTouches.length === 1 && moveDistance < CLICK_DISTANCE) {
           this._singleClickTimeout = window.setTimeout(() => {
             if (typeof onTap === 'function') {
-              onTap({ locationX, locationY, pageX, pageY });
+            this.close();
+              //onTap({ locationX, locationY, pageX, pageY });
             }
           }, DOUBLE_CLICK_INTERVAL);
         } else {
@@ -688,8 +691,12 @@ export default class ImageDetail extends React.Component<Props> {
       <View
         style={{
           overflow: 'hidden',
-          width: '100%',
-          height: '100%',
+          width: '90%',
+          height: '90%',
+          marginLeft: 'auto',
+          marginRight:'auto',
+          marginBottom:10,
+          borderRadius:10,
         }}
         {...(this._imagePanResponder ? this._imagePanResponder.panHandlers : undefined)}>
         {background}
@@ -701,8 +708,8 @@ export default class ImageDetail extends React.Component<Props> {
             style={[
               imageStyle,
               {
-                width: '100%',
-                height: '100%',
+                width: '90%',
+                height: '90%',
               },
             ]}
             source={source}
