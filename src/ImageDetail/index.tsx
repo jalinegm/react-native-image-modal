@@ -162,7 +162,7 @@ export default class ImageDetail extends React.Component<Props> {
         if (this._longPressTimeout) {
           clearTimeout(this._longPressTimeout);
         }
-        this._longPressTimeout = setTimeout(() => {
+        this._longPressTimeout = global.setTimeout(() => {
           this._isLongPress = true;
           if (typeof onLongPress === 'function') {
             onLongPress();
@@ -387,7 +387,7 @@ export default class ImageDetail extends React.Component<Props> {
         const { locationX, locationY, pageX, pageY } = evt.nativeEvent;
 
         if (evt.nativeEvent.changedTouches.length === 1 && moveDistance < CLICK_DISTANCE) {
-          this._singleClickTimeout = setTimeout(() => {
+          this._singleClickTimeout = global.setTimeout(() => {
             if (typeof onTap === 'function') {
               onTap({ locationX, locationY, pageX, pageY });
             }
@@ -516,7 +516,7 @@ export default class ImageDetail extends React.Component<Props> {
     if (isTranslucent) {
       StatusBar.setHidden(false);
     }
-    setTimeout(() => {
+    global.setTimeout(() => {
       this._isAnimated = true;
       if (typeof willClose === 'function') {
         willClose();
