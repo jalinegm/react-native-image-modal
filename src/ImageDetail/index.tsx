@@ -17,7 +17,8 @@ import {
   ImageStyle,
 } from 'react-native';
 
-import { OnTap, OnMove } from '../types';
+//import { OnTap, OnMove } from '../types';
+import { OnMove } from '../types';
 
 const LONG_PRESS_TIME = 800;
 const DOUBLE_CLICK_INTERVAL = 250;
@@ -392,6 +393,7 @@ export default class ImageDetail extends React.Component<Props> {
           this._singleClickTimeout = window.setTimeout(() => {
             if (typeof onTap === 'function') {
             this.close();
+            return;
               //onTap({ locationX, locationY, pageX, pageY });
             }
           }, DOUBLE_CLICK_INTERVAL);

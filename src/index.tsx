@@ -11,7 +11,8 @@ import {
   ImageStyle,
 } from 'react-native';
 
-import { OnTap, OnMove } from './types';
+//import { OnTap, OnMove } from './types';
+import { OnMove } from './types';
 import ImageDetail from './ImageDetail';
 
 interface State {
@@ -36,7 +37,7 @@ interface Props extends ImageProps {
   onLongPressOriginImage?: () => void;
   renderHeader?: (close: () => void) => JSX.Element | Array<JSX.Element>;
   renderFooter?: (close: () => void) => JSX.Element | Array<JSX.Element>;
-  onTap?: (eventParams: OnTap) => void;
+  onTap?: () => void; //(eventParams: OnTap) => void;
   onDoubleTap?: () => void;
   onLongPress?: () => void;
   onOpen?: () => void;
