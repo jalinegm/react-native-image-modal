@@ -664,7 +664,7 @@ export default class ImageDetail extends React.Component<Props> {
         {typeof renderHeader === 'function' ? (
           renderHeader(this.close)
         ) : !hideCloseButton ? (
-          <SafeAreaView>
+          <SafeAreaView style={{alignItems: 'flex-end'}}>
             <TouchableOpacity onPress={this.close}>
               <Text style={Styles.closeButton}>×</Text>
             </TouchableOpacity>
