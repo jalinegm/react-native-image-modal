@@ -51,8 +51,10 @@ export default class ImageModal extends React.Component<Props, State> {
   private _root: View | null = null;
   private _originImageOpacity = new Animated.Value(1);
 
+
   constructor(props: Props) {
     super(props);
+    var firstTime = true;
     const { isTranslucent } = props;
     if (Platform.OS === 'android' && isTranslucent) {
       StatusBar.setTranslucent(isTranslucent);
@@ -151,6 +153,10 @@ export default class ImageModal extends React.Component<Props, State> {
       willClose,
     } = this.props;
     const { isOpen, origin } = this.state;
+    if(firstTime){
+            firstTime = false;
+            _this._open();
+        }
     return (
       <View
         ref={(component): void => {
